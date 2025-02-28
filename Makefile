@@ -23,7 +23,6 @@ BWHITE    	:= \033[1;37m
 NEW			:= \r\033[K
 
 ### DIRECTORIES ###
-LIBFT_DIR 	:= libft
 SRC_DIR 	:= src
 INCLD_DIR 	:= include
 OBJS_DIR 	:= objs
@@ -31,7 +30,6 @@ OBJS_DIR 	:= objs
 ### FILES ###
 define INCLUDES	:=
 	$(INCLD_DIR)/
-	$(LIBFT_DIR)/$(INCLD_DIR)/
 endef
 INCLD_FLAG 	:= ${addprefix -I , ${INCLUDES}}
 
@@ -39,16 +37,11 @@ define INCLD_FILES :=
 	philo.h
 endef
 
-### LIB ###
-LIBFT		:= ${LIBFT_DIR}/libft.a
-LIB 		:= ${LIBFT}
-LIB 		:= ${strip ${LIB}}
 
 ### SRCS ###
 define SRC 	:=
 	main.c
 endef
-
 
 SRC 		:= ${strip ${SRC}}
 OBJS 		:= ${patsubst %.c,${OBJS_DIR}/%.o,${SRC}}
@@ -57,9 +50,9 @@ DEPS		:= ${patsubst %.c,${OBJS_DIR}/%.d,${SRC}}
 ### PROJECT ###
 all: ${NAME}
 
-${NAME}: ${LIB} ${OBJS}
+${NAME}: ${OBJS}
 	@printf "${NEW}${PURPLE}[${NAME}] ${UGREEN}Compiling :${DEFAULT}${BWHITE} $@${DEFAULT}"
-	@${CC} ${CFLAGS} ${OBJS} ${LIB} ${INCLD_FLAG} -o $@ ${LDFLAGS}
+	@${CC} ${CFLAGS} ${OBJS} ${INCLD_FLAG} -o $@ ${LDFLAGS}
 	@printf "\n"
 
 -include ${DEPS}
@@ -78,19 +71,6 @@ fclean: clean
 
 re: fclean all
 
-### LIBFT ###
-${LIBFT}:
-	@make -C ${LIBFT_DIR} ${MAKE_FLAG}
-
-cleanlib:
-	@make -C ${LIBFT_DIR} clean ${MAKE_FLAG}
-
-fcleanlib:
-	@make -C ${LIBFT_DIR} fclean ${MAKE_FLAG}
-	@printf "${DRED}[${LIBFT_DIR}] Library cleaned.\n"
-
-relib:
-	@make -C ${LIBFT_DIR} re ${MAKE_FLAG}
 
 ### NORM ###
 norm: ; @make -C ${LIBFT_DIR} norm ${MAKE_FLAG}
