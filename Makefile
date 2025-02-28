@@ -1,14 +1,19 @@
 ### PROGRAM NAME ###
-NAME		:= philosopher
+
+NAME		:= philo
+
 
 ### UTILS ###
+
 CC 			:= cc
 CFLAGS 		:= -Wall -Wextra -Werror -g3
 DEP_FLAGS	:= -MMD -MP
 MAKE_FLAG 	:= --no-print-directory --silent
 RM 			:= rm -rf
 
+
 ### COLORS ###
+
 DEFAULT    	:= \033[0m
 BLACK    	:= \033[0;30m
 RED        	:= \033[0;31m
@@ -22,12 +27,16 @@ CYAN    	:= \033[0;36m
 BWHITE    	:= \033[1;37m
 NEW			:= \r\033[K
 
+
 ### DIRECTORIES ###
+
 SRC_DIR 	:= src
 INCLD_DIR 	:= include
 OBJS_DIR 	:= objs
 
+
 ### FILES ###
+
 define INCLUDES	:=
 	$(INCLD_DIR)/
 endef
@@ -39,6 +48,7 @@ endef
 
 
 ### SRCS ###
+
 define SRC 	:=
 	main.c
 endef
@@ -48,6 +58,7 @@ OBJS 		:= ${patsubst %.c,${OBJS_DIR}/%.o,${SRC}}
 DEPS		:= ${patsubst %.c,${OBJS_DIR}/%.d,${SRC}}
 
 ### PROJECT ###
+
 all: ${NAME}
 
 ${NAME}: ${OBJS}
@@ -73,6 +84,7 @@ re: fclean all
 
 
 ### NORM ###
+
 norm: ; @make -C ${LIBFT_DIR} norm ${MAKE_FLAG}
 	@norminette ${SRC_DIR} ${INCLD_DIR}
 
@@ -87,7 +99,9 @@ format:
 		c_formatter_42 $(INCLD_DIR)/$$file; \
 	done
 
+
 ### RUN ###
+
 run: $(NAME)
 	./$(NAME)
 
