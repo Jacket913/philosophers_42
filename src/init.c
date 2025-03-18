@@ -34,6 +34,7 @@ void	init_forks(pthread_mutex_t *forks, int nb_philos)
 	while (i < nb_philos)
 	{
 		pthread_mutex_init(&forks[i], NULL);
+		printf("||| Initialized Fork %d.\n", i + 1);
 		i++;
 	}
 }
@@ -58,6 +59,15 @@ void	init_philo(t_philo *philo, char **av,
 		philo[i].write_mutex = &program->write_mutex;
 		philo[i].eat_mutex = &program->eat_mutex;
 		philo[i].dead_mutex = &program->dead_mutex;
+		print_philo(&philo[i], "\n== Initialized ==\n");
+		ft_usleep(1000);
+		i++;
+	}
+	write(1, "\n", 1);
+	i = 0;
+	while (i < ft_atoi(av[1]))
+	{
+		print_philo(&philo[i], "\n++ After sleep ++\n");
 		i++;
 	}
 }
