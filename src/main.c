@@ -14,6 +14,10 @@
 
 int	main(int ac, char **av)
 {
+	t_program		program;
+	t_philo			philo[200];
+	pthread_mutex_t	forks[200];
+
 	//check for wrong number of arguments
 	if (ac < 5 || ac > 6)
 		return (error("Error: Wrong number of arguments.\n"), 1);
@@ -29,10 +33,13 @@ int	main(int ac, char **av)
 	//av[5] = number of meals before stop
 
 	//init program
+	init_program(&program, philo);
 
 	//init forks
+	init_forks(forks, ft_atoi(av[1]));
 
 	//init philos
+	init_philo(philo, av, &program, forks);
 
 	//join threads
 
