@@ -50,6 +50,7 @@ endef
 ### SRCS ###
 
 define SRC 	:=
+	error_checks.c
 	main.c
 	utils.c
 endef
