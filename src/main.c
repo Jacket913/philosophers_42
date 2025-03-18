@@ -19,6 +19,7 @@ int	main(int ac, char **av)
 		return (error("Error: Wrong number of arguments.\n"), 1);
 
 	//check for numerical values
+	if (check_args(av))
 		return (1);
 
 	//av[1] = number of philosophers (200 max)
