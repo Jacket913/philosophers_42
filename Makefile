@@ -51,6 +51,7 @@ endef
 
 define SRC 	:=
 	main.c
+	utils.c
 endef
 
 SRC 		:= ${strip ${SRC}}
