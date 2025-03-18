@@ -38,7 +38,7 @@ OBJS_DIR 	:= objs
 ### FILES ###
 
 define INCLUDES	:=
-	$(INCLD_DIR)/
+	$(INCLD_DIR)
 endef
 INCLD_FLAG 	:= ${addprefix -I , ${INCLUDES}}
 
@@ -86,7 +86,7 @@ re: fclean all
 
 ### NORM ###
 
-norm: ; @make -C ${LIBFT_DIR} norm ${MAKE_FLAG}
+norm:
 	@norminette ${SRC_DIR} ${INCLD_DIR}
 
 watch:
