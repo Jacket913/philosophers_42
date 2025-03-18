@@ -16,7 +16,7 @@ int	main(int ac, char **av)
 {
 	//check for wrong number of arguments
 	if (ac < 5 || ac > 6)
-		printf("Error: Wrong number of arguments\n");
+		return (error("Error: Wrong number of arguments.\n"), 1);
 
 	//check for numerical values
 		return (1);
