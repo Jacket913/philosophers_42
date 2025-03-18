@@ -51,6 +51,7 @@ endef
 
 define SRC 	:=
 	error_checks.c
+	ft_usleep.c
 	main.c
 	utils.c
 endef

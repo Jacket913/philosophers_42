@@ -52,6 +52,10 @@ typedef struct s_program
 void	error(char *str);
 int		check_args(char **av);
 
+// ft_usleep.c
+size_t	get_current_time(void);
+int		ft_usleep(size_t milliseconds);
+
 // utils.c
 size_t	ft_strlen(char *str);
 int		ft_atoi(const char *nptr);
