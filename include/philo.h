@@ -56,6 +56,12 @@ int		check_args(char **av);
 size_t	get_current_time(void);
 int		ft_usleep(size_t milliseconds);
 
+//init.c
+void	init_forks(pthread_mutex_t *forks, int nb_philos);
+void	init_philo(t_philo *philo, char **av, t_program *program, \
+		pthread_mutex_t *forks);
+void	init_program(t_program *program, t_philo *philo);
+
 // utils.c
 size_t	ft_strlen(char *str);
 int		ft_atoi(const char *nptr);
