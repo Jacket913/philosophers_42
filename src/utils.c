@@ -45,6 +45,16 @@ int	ft_atoi(const char *nptr)
 	return (nb * neg);
 }
 
+void	print_mutex(char *str, t_philo *philo, int id)
+{
+	size_t	time;
+
+	pthread_mutex_lock(philo->write_mutex);
+	time = get_current_time() - philo->start_time;
+	printf("[%zu] %d %s\n", time, id, str);
+	pthread_mutex_unlock(philo->write_mutex);
+}
+
 void	print_philo(t_philo *philo, t_program *program, char *str)
 {
 	pthread_mutex_lock(philo->write_mutex);

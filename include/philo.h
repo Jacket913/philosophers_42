@@ -65,6 +65,7 @@ void	init_program(t_program *program, t_philo *philo);
 // utils.c
 size_t	ft_strlen(char *str);
 int		ft_atoi(const char *nptr);
+void	print_mutex(char *str, t_philo *philo, int id);
 void	print_philo(t_philo *philo, t_program *program, char *str);
 
 #endif
