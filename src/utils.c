@@ -50,11 +50,11 @@ void	print_philo(t_philo *philo, char *str)
 	pthread_mutex_lock(philo->write_mutex);
 	printf("%s[%zu] Philo {%d}\n", str, \
 		get_current_time() - philo->start_time, philo->id);
-	printf("	nb_philos: %d\n", philo->nb_philos);
+	printf("	nb_philos: %d\n", philo->number_of_philosophers);
 	printf("	time_to_die: %ld\n", philo->time_to_die);
 	printf("	time_to_eat: %ld\n", philo->time_to_eat);
 	printf("	time_to_sleep: %ld\n", philo->time_to_sleep);
-	printf("	max_meals: %d\n", philo->max_meals);
+	printf("	max_meals: %d\n", philo->number_of_times_each_philosopher_must_eat);
 	printf("	eating: %d\n", philo->eating);
 	printf("	meals_eaten: %d\n", philo->meals_eaten);
 	printf("	last_meal: %zu\n", get_current_time() - philo->last_meal);

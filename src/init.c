@@ -6,7 +6,7 @@
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 18:48:20 by gmoulin           #+#    #+#             */
-/*   Updated: 2025/03/19 00:36:36 by gmoulin          ###   ########.fr       */
+/*   Updated: 2025/03/19 19:32:46 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,24 @@
 
 static void	init_settings(t_philo *philo, char **av)
 {
-	philo->nb_philos = ft_atoi(av[1]);
+	philo->number_of_philosophers = ft_atoi(av[1]);
 	philo->time_to_die = ft_atoi(av[2]);
 	philo->time_to_eat = ft_atoi(av[3]);
 	philo->time_to_sleep = ft_atoi(av[4]);
 	if (av[5])
-		philo->max_meals = ft_atoi(av[5]);
+		philo->number_of_times_each_philosopher_must_eat = ft_atoi(av[5]);
 	else
-		philo->max_meals = -1;
+		philo->number_of_times_each_philosopher_must_eat = -1;
 	philo->eating = 0;
 	philo->last_meal = 0;
 }
 
-void	init_forks(pthread_mutex_t *forks, int nb_philos)
+void	init_forks(pthread_mutex_t *forks, int number_of_philosophers)
 {
 	int	i;
 
 	i = 0;
-	while (i < nb_philos)
+	while (i < number_of_philosophers)
 	{
 		pthread_mutex_init(&forks[i], NULL);
 		printf("||| Initialized Fork %d.\n", i + 1);
@@ -55,7 +55,7 @@ void	init_philo(t_philo *philo, char **av,
 		philo[i].meals_eaten = 0;
 		philo[i].dead = &program->dead;
 		philo[i].right_fork = &forks[i];
-		philo[i].left_fork = &forks[(i + 1) % philo->nb_philos];
+		philo[i].left_fork = &forks[(i + 1) % philo->number_of_philosophers];
 		philo[i].write_mutex = &program->write_mutex;
 		philo[i].eat_mutex = &program->eat_mutex;
 		philo[i].dead_mutex = &program->dead_mutex;

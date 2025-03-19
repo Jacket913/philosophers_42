@@ -6,7 +6,7 @@
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 15:04:30 by gmoulin           #+#    #+#             */
-/*   Updated: 2025/03/19 01:31:55 by gmoulin          ###   ########.fr       */
+/*   Updated: 2025/03/19 19:29:36 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ typedef struct s_philo
 {
 	pthread_t		thread;
 	int				id;
-	int				nb_philos;
-	int				max_meals;
+	int				number_of_philosophers;
+	int				number_of_times_each_philosopher_must_eat;
 	size_t			time_to_die;
 	size_t			time_to_eat;
 	size_t			time_to_sleep;
