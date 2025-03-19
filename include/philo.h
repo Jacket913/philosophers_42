@@ -6,7 +6,7 @@
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 15:04:30 by gmoulin           #+#    #+#             */
-/*   Updated: 2025/03/19 00:05:28 by gmoulin          ###   ########.fr       */
+/*   Updated: 2025/03/19 01:31:55 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,24 +20,24 @@
 
 typedef struct s_philo
 {
-	pthread_t	thread;
-	int			id;
-	int			nb_philos;
-	int			max_meals;
-	size_t		time_to_die;
-	size_t		time_to_eat;
-	size_t		time_to_sleep;
-	size_t		start_time;
-	int			eating;
-	int			meals_eaten;
-	size_t		last_meal;
-	int			*dead;
-	pthread_mutex_t			*left_fork;
-	pthread_mutex_t			*right_fork;
-	pthread_mutex_t			*write_mutex;
-	pthread_mutex_t			*eat_mutex;
-	pthread_mutex_t			*dead_mutex;
-} t_philo;
+	pthread_t		thread;
+	int				id;
+	int				nb_philos;
+	int				max_meals;
+	size_t			time_to_die;
+	size_t			time_to_eat;
+	size_t			time_to_sleep;
+	size_t			start_time;
+	int				eating;
+	int				meals_eaten;
+	size_t			last_meal;
+	int				*dead;
+	pthread_mutex_t	*left_fork;
+	pthread_mutex_t	*right_fork;
+	pthread_mutex_t	*write_mutex;
+	pthread_mutex_t	*eat_mutex;
+	pthread_mutex_t	*dead_mutex;
+}	t_philo;
 
 typedef struct s_program
 {
@@ -46,7 +46,7 @@ typedef struct s_program
 	pthread_mutex_t	write_mutex;
 	pthread_mutex_t	eat_mutex;
 	pthread_mutex_t	dead_mutex;
-} t_program;
+}	t_program;
 
 // error_checks.c
 void	error(char *str);

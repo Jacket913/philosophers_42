@@ -6,7 +6,7 @@
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 18:29:36 by gmoulin           #+#    #+#             */
-/*   Updated: 2025/03/18 18:39:13 by gmoulin          ###   ########.fr       */
+/*   Updated: 2025/03/19 01:29:32 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,12 @@ void	error(char *str)
 int	check_args(char **av)
 {
 	int	i;
+	int	j;
 
 	i = 0;
 	while (av[++i])
 	{
-		int j = 0;
+		j = 0;
 		while (av[i][j])
 		{
 			if (av[i][j] < '0' || av[i][j] > '9')

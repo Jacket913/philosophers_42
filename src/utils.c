@@ -6,7 +6,7 @@
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 18:34:29 by gmoulin           #+#    #+#             */
-/*   Updated: 2025/03/19 00:44:14 by gmoulin          ###   ########.fr       */
+/*   Updated: 2025/03/19 01:28:09 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ int	ft_atoi(const char *nptr)
 void	print_philo(t_philo *philo, char *str)
 {
 	pthread_mutex_lock(philo->write_mutex);
-	printf("%s[%zu] Philo {%d}\n", str, get_current_time() - philo->start_time, philo->id);
+	printf("%s[%zu] Philo {%d}\n", str, \
+		get_current_time() - philo->start_time, philo->id);
 	printf("	nb_philos: %d\n", philo->nb_philos);
 	printf("	time_to_die: %ld\n", philo->time_to_die);
 	printf("	time_to_eat: %ld\n", philo->time_to_eat);
