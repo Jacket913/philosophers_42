@@ -50,6 +50,7 @@ endef
 ### SRCS ###
 
 define SRC 	:=
+	dead_check.c \
 	error_checks.c \
 	ft_usleep.c \
 	init.c \

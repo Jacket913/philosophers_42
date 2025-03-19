@@ -48,6 +48,9 @@ typedef struct s_program
 	pthread_mutex_t	dead_mutex;
 }	t_program;
 
+//dead_check.c
+int	program_dead_check(t_philo *philo, t_program *program);
+
 // error_checks.c
 void	error(char *str);
 int		check_args(char **av);

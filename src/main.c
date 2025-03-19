@@ -46,6 +46,9 @@ int	main(int ac, char **av)
 		while (1)
 		{
 			//checks for death every 1ms and break if there is one
+			if (program_dead_check(philo, &program))
+				break;
+
 			//if thinking and not max meals eaten
 				//if left fork available
 					//grab fork left
