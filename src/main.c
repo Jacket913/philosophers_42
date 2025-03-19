@@ -6,7 +6,7 @@
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 15:04:12 by gmoulin           #+#    #+#             */
-/*   Updated: 2025/03/19 00:09:07 by gmoulin          ###   ########.fr       */
+/*   Updated: 2025/03/19 19:29:15 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,25 +43,33 @@ int	main(int ac, char **av)
 
 	//join threads
 
-		//while no dead philosophers and no max meals eaten (av[5])
-			//tick down time to die
-			//if dead or max meals eaten (av[5]), break
-			//if fork available and not sleeping
-				//grab fork left
-				//print "[timestamp in ms] Philo [id] has taken a fork"
-				//grab fork right
-				//print "[timestamp in ms] Philo [id] has taken a fork"
-				//philo is eating
-				//print "[timestamp in ms] Philo [id] is eating"
-				//sleep for (av[3]) time
-				//release forks
-			//if fork not available
-				//if didn't sleep since last meal
-					//sleep once for (av[4]) time
+		while (1)
+		{
+			//checks for death every 1ms and break if there is one
+			//if thinking and not max meals eaten
+				//if left fork available
+					//grab fork left
+					//print "[timestamp in ms] Philo [id] has taken a fork"
+					//if right fork available
+						//grab fork right
+						//print "[timestamp in ms] Philo [id] has taken a fork"
+					//else if right fork not available
+						//release left fork
+
+				//if holding both forks
+					//philo is eating
+					//print "[timestamp in ms] Philo [id] is eating"
+					//sleep for (av[3]) time
+					//release left fork
+					//release right fork
+					//philo is sleeping
 					//print "[timestamp in ms] Philo [id] is sleeping"
-				//if slept since last meal
-					//thinking
-					//print "[timestamp in ms] Philo [id] is thinking"
+					//sleep for (av[4]) time
+
+			//else
+				//philo is thinking
+				//print "[timestamp in ms] Philo [id] is thinking"
+		}
 	//destroy mutexes
 	return (0);
 }
