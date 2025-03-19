@@ -65,6 +65,6 @@ void	init_program(t_program *program, t_philo *philo);
 // utils.c
 size_t	ft_strlen(char *str);
 int		ft_atoi(const char *nptr);
-void	print_philo(t_philo *philo, char *str);
+void	print_philo(t_philo *philo, t_program *program, char *str);
 
 #endif

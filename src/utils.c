@@ -6,7 +6,7 @@
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 18:34:29 by gmoulin           #+#    #+#             */
-/*   Updated: 2025/03/19 01:28:09 by gmoulin          ###   ########.fr       */
+/*   Updated: 2025/03/19 19:23:29 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	ft_atoi(const char *nptr)
 	return (nb * neg);
 }
 
-void	print_philo(t_philo *philo, char *str)
+void	print_philo(t_philo *philo, t_program *program, char *str)
 {
 	pthread_mutex_lock(philo->write_mutex);
 	printf("%s[%zu] Philo {%d}\n", str, \
@@ -61,5 +61,9 @@ void	print_philo(t_philo *philo, char *str)
 	printf("	dead pointer: %p\n", philo->dead);
 	printf("	left_fork: %p\n", philo->left_fork);
 	printf("	right_fork: %p\n", philo->right_fork);
+	printf("	write_mutex: %p\n", philo->write_mutex);
+	printf("	eat_mutex: %p\n", philo->eat_mutex);
+	printf("	dead_mutex: %p\n", philo->dead_mutex);
+	printf("Program is being used by philosopher ID: %d\n", program->philos[philo->id - 1].id);
 	pthread_mutex_unlock(philo->write_mutex);
 }

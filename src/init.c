@@ -59,15 +59,15 @@ void	init_philo(t_philo *philo, char **av,
 		philo[i].write_mutex = &program->write_mutex;
 		philo[i].eat_mutex = &program->eat_mutex;
 		philo[i].dead_mutex = &program->dead_mutex;
-		print_philo(&philo[i], "\n== Initialized ==\n");
-		ft_usleep(1000);
+		print_philo(&philo[i], program, "\n== Initialized ==\n");
+		ft_usleep(500);
 		i++;
 	}
 	write(1, "\n", 1);
 	i = 0;
 	while (i < ft_atoi(av[1]))
 	{
-		print_philo(&philo[i], "\n++ After sleep ++\n");
+		print_philo(&philo[i], program, "\n++ After sleep ++\n");
 		i++;
 	}
 }
