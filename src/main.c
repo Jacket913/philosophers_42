@@ -6,7 +6,7 @@
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 15:04:12 by gmoulin           #+#    #+#             */
-/*   Updated: 2025/03/20 03:38:04 by gmoulin          ###   ########.fr       */
+/*   Updated: 2025/03/20 03:45:19 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ int	main(int ac, char **av)
 			//checks for death every 1ms and break if there is one
 			if (program_dead_check(philo, &program))
 				break;
-
+			
+			//int thinking = 0;
 			//if thinking
 				//if left fork available
 					//grab fork left
@@ -52,6 +53,7 @@ int	main(int ac, char **av)
 						//print "[timestamp in ms] Philo [id] has taken a fork"
 					//else if right fork not available
 						//release left fork
+						//print "[timestamp in ms] Philo [id] has released a fork"
 
 				//if holding both forks
 					//philo is eating
@@ -65,7 +67,9 @@ int	main(int ac, char **av)
 
 			//else
 				//philo is thinking
-				//print "[timestamp in ms] Philo [id] is thinking"
+				//if !thinking
+					//print "[timestamp in ms] Philo [id] is thinking"
+					//thinking = 1
 		}
 	//destroy mutexes
 	return (0);
