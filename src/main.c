@@ -6,7 +6,7 @@
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 15:04:12 by gmoulin           #+#    #+#             */
-/*   Updated: 2025/03/20 03:24:50 by gmoulin          ###   ########.fr       */
+/*   Updated: 2025/03/20 03:38:04 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	main(int ac, char **av)
 			if (program_dead_check(philo, &program))
 				break;
 
-			//if thinking && !max_meals_eaten_check(philo))
+			//if thinking
 				//if left fork available
 					//grab fork left
 					//print "[timestamp in ms] Philo [id] has taken a fork"
