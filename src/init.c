@@ -6,7 +6,7 @@
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 18:48:20 by gmoulin           #+#    #+#             */
-/*   Updated: 2025/03/19 19:32:46 by gmoulin          ###   ########.fr       */
+/*   Updated: 2025/03/20 03:25:20 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	init_settings(t_philo *philo, char **av)
 	philo->last_meal = 0;
 }
 
-void	init_forks(pthread_mutex_t *forks, int number_of_philosophers)
+static void	init_forks(pthread_mutex_t *forks, int number_of_philosophers)
 {
 	int	i;
 
@@ -39,7 +39,7 @@ void	init_forks(pthread_mutex_t *forks, int number_of_philosophers)
 	}
 }
 
-void	init_philo(t_philo *philo, char **av,
+static void	init_philo(t_philo *philo, char **av,
 	t_program *program, pthread_mutex_t *forks)
 {
 	int	i;
@@ -72,11 +72,19 @@ void	init_philo(t_philo *philo, char **av,
 	}
 }
 
-void	init_program(t_program *program, t_philo *philos)
+static void	init_program(t_program *program, t_philo *philos)
 {
 	program->dead = 0;
 	program->philos = philos;
 	pthread_mutex_init(&program->write_mutex, NULL);
 	pthread_mutex_init(&program->eat_mutex, NULL);
 	pthread_mutex_init(&program->dead_mutex, NULL);
+}
+
+void	init(t_philo *philo, char **av, t_program *program,
+	pthread_mutex_t *forks)
+{
+	init_program(program, philo);
+	init_forks(forks, ft_atoi(av[1]));
+	init_philo(philo, av, program, forks);
 }

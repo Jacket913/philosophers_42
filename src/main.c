@@ -6,7 +6,7 @@
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 15:04:12 by gmoulin           #+#    #+#             */
-/*   Updated: 2025/03/19 19:29:15 by gmoulin          ###   ########.fr       */
+/*   Updated: 2025/03/20 03:24:50 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,8 @@ int	main(int ac, char **av)
 	//av[4] = time to sleep
 	//av[5] = number of meals before stop
 
-	//init program
-	init_program(&program, philo);
-
-	//init forks
-	init_forks(forks, ft_atoi(av[1]));
-
-	//init philos
-	init_philo(philo, av, &program, forks);
+	//init program, forks, philo
+	init(philo, av, &program, forks);
 
 	//join threads
 
