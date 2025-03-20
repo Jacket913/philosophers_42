@@ -43,7 +43,7 @@ int	main(int ac, char **av)
 			if (program_dead_check(philo, &program))
 				break;
 
-			//if thinking and not max meals eaten
+			//if thinking && !max_meals_eaten_check(philo))
 				//if left fork available
 					//grab fork left
 					//print "[timestamp in ms] Philo [id] has taken a fork"

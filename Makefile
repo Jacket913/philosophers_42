@@ -55,6 +55,7 @@ define SRC 	:=
 	ft_usleep.c \
 	init.c \
 	main.c \
+	meals_check.c \
 	utils.c
 endef
 

@@ -63,6 +63,10 @@ int		ft_usleep(size_t milliseconds);
 void	init(t_philo *philo, char **av, t_program *program,
 	pthread_mutex_t *forks);
 
+// meals_check.c
+int		full_of_soup_check(t_philo *philo);
+int		philos_all_fed_check(t_philo *philo, t_program *program);
+
 // utils.c
 size_t	ft_strlen(char *str);
 int		ft_atoi(const char *nptr);
