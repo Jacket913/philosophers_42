@@ -6,7 +6,7 @@
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 18:52:56 by gmoulin           #+#    #+#             */
-/*   Updated: 2025/03/19 19:33:00 by gmoulin          ###   ########.fr       */
+/*   Updated: 2025/03/19 20:02:05 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,5 @@ int	program_dead_check(t_philo *philo, t_program *program)
 		}
 		if (program->dead)
 			return (1);
-		ft_usleep(1000);
 	}
 }
