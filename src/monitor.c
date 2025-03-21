@@ -6,12 +6,13 @@
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 04:35:01 by gmoulin           #+#    #+#             */
-/*   Updated: 2025/03/21 19:33:07 by gmoulin          ###   ########.fr       */
+/*   Updated: 2025/03/21 20:56:32 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
+// checks if all philosophers are full
 static int	philos_all_fed_check(t_philo *philo)
 {
 	int	i;
@@ -40,6 +41,7 @@ static int	philos_all_fed_check(t_philo *philo)
 	return (0);
 }
 
+// checks if one philosopher is dead from starvation
 static int	philo_dead_check(t_philo *philo)
 {
 	pthread_mutex_lock(philo->eat_mutex);
@@ -50,6 +52,7 @@ static int	philo_dead_check(t_philo *philo)
 	return (0);
 }
 
+// checks if one of all philosophers is dead
 static int	program_dead_check(t_philo *philo)
 {
 	int	i;
@@ -70,15 +73,7 @@ static int	program_dead_check(t_philo *philo)
 	return (0);
 }
 
-int	check_dead_flag(t_philo *philo)
-{
-	pthread_mutex_lock(philo->dead_mutex);
-	if (*philo->dead == 1)
-		return (pthread_mutex_unlock(philo->dead_mutex), 1);
-	pthread_mutex_unlock(philo->dead_mutex);
-	return (0);
-}
-
+// monitor logic to check if the philosophers are dead or full
 void	*monitor_logic(void *arg)
 {
 	t_philo		*philos;
