@@ -50,13 +50,13 @@ endef
 ### SRCS ###
 
 define SRC 	:=
-	error_checks.c \
+	args_checks.c \
 	ft_usleep.c \
 	init.c \
 	main.c \
 	monitor.c \
-	philo_logic.c \
-	threads_join.c \
+	philos.c \
+	threads.c \
 	utils.c
 endef
 
