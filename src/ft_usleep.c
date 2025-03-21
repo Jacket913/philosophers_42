@@ -6,13 +6,13 @@
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 15:37:51 by gmoulin           #+#    #+#             */
-/*   Updated: 2025/03/18 18:30:36 by gmoulin          ###   ########.fr       */
+/*   Updated: 2025/03/21 20:57:32 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-// Gets the current time in milliseconds
+// gets the current time in milliseconds
 size_t	get_current_time(void)
 {
 	struct timeval	time;
@@ -22,7 +22,7 @@ size_t	get_current_time(void)
 	return (time.tv_sec * 1000 + time.tv_usec / 1000);
 }
 
-// Improved version of sleep function
+// improved version of sleep function
 int	ft_usleep(size_t milliseconds)
 {
 	size_t	start;
