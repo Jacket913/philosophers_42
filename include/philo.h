@@ -6,18 +6,20 @@
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 15:04:30 by gmoulin           #+#    #+#             */
-/*   Updated: 2025/03/21 19:51:19 by gmoulin          ###   ########.fr       */
+/*   Updated: 2025/03/21 20:58:46 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
 
+// includes
 # include <stdio.h>
 # include <unistd.h>
 # include <sys/time.h>
 # include <pthread.h>
 
+// structs
 typedef struct s_philo
 {
 	pthread_t		thread;
@@ -48,6 +50,7 @@ typedef struct s_program
 	pthread_mutex_t	dead_mutex;
 }	t_program;
 
+// messages
 # define FORK	"has taken a fork"
 # define EAT	"is eating"
 # define SLEEP	"is sleeping"
@@ -75,7 +78,6 @@ void	init(t_philo *philo, char **av, t_program *program,
 void	*monitor_logic(void *arg);
 
 // philo_logic.c
-int		is_dead(t_philo *philo);
 void	*philo_logic(void *philo);
 
 // thread_join.c
@@ -85,6 +87,7 @@ void	threads_engage(t_program *program, pthread_mutex_t *forks);
 void	destroy_mutexes(char *str, t_program *program, pthread_mutex_t *forks);
 size_t	ft_strlen(char *str);
 int		ft_atoi(const char *nptr);
+int		is_dead(t_philo *philo);
 void	print_mutex(char *str, t_philo *philo, int id);
 
 #endif
