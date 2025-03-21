@@ -6,12 +6,13 @@
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 18:48:20 by gmoulin           #+#    #+#             */
-/*   Updated: 2025/03/21 19:51:29 by gmoulin          ###   ########.fr       */
+/*   Updated: 2025/03/21 20:57:17 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
+//initialize av values to philo struct
 static void	init_settings(t_philo *philo, char **av)
 {
 	philo->number_of_philosophers = ft_atoi(av[1]);
@@ -26,6 +27,7 @@ static void	init_settings(t_philo *philo, char **av)
 	philo->last_meal = 0;
 }
 
+//initialize forks
 static void	init_forks(pthread_mutex_t *forks, int number_of_philosophers)
 {
 	int	i;
@@ -39,6 +41,7 @@ static void	init_forks(pthread_mutex_t *forks, int number_of_philosophers)
 	}
 }
 
+//initialize philo struct with settings
 static void	init_philo(t_philo *philo, char **av,
 	t_program *program, pthread_mutex_t *forks)
 {
@@ -63,6 +66,7 @@ static void	init_philo(t_philo *philo, char **av,
 	}
 }
 
+//initialize program struct
 static void	init_program(t_program *program, t_philo *philos)
 {
 	program->dead = 0;
@@ -72,6 +76,7 @@ static void	init_program(t_program *program, t_philo *philos)
 	pthread_mutex_init(&program->dead_mutex, NULL);
 }
 
+//initialize philo struct, forks and program struct
 void	init(t_philo *philo, char **av, t_program *program,
 	pthread_mutex_t *forks)
 {
