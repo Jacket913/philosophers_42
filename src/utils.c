@@ -6,12 +6,13 @@
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 18:34:29 by gmoulin           #+#    #+#             */
-/*   Updated: 2025/03/21 19:35:26 by gmoulin          ###   ########.fr       */
+/*   Updated: 2025/03/21 20:54:03 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
+//destroy mutexes while printing an error message
 void	destroy_mutexes(char *str, t_program *program, pthread_mutex_t *forks)
 {
 	int	i;
@@ -29,6 +30,7 @@ void	destroy_mutexes(char *str, t_program *program, pthread_mutex_t *forks)
 	pthread_mutex_destroy(&program->dead_mutex);
 }
 
+//strlen for char *
 size_t	ft_strlen(char *str)
 {
 	size_t	i;
@@ -39,6 +41,7 @@ size_t	ft_strlen(char *str)
 	return (i);
 }
 
+//ATOI for argv
 int	ft_atoi(const char *nptr)
 {
 	size_t	nb;
@@ -62,6 +65,20 @@ int	ft_atoi(const char *nptr)
 	return (nb * neg);
 }
 
+//checks if the philo is dead
+int	is_dead(t_philo *philo)
+{
+	pthread_mutex_lock(philo->dead_mutex);
+	if (*philo->dead)
+	{
+		pthread_mutex_unlock(philo->dead_mutex);
+		return (1);
+	}
+	pthread_mutex_unlock(philo->dead_mutex);
+	return (0);
+}
+
+//Prints the timestamp, id and string with a mutex lock
 void	print_mutex(char *str, t_philo *philo, int id)
 {
 	size_t	time;
@@ -74,7 +91,7 @@ void	print_mutex(char *str, t_philo *philo, int id)
 		printf("[%zu] %d %s\n", time, id, str);
 	pthread_mutex_unlock(philo->write_mutex);
 }
-
+//Prints philo struct and initiated values
 /*void	print_philo(t_philo *philo, t_program *program, char *str)
 {
 	pthread_mutex_lock(philo->write_mutex);
