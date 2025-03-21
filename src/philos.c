@@ -6,7 +6,7 @@
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 03:48:20 by gmoulin           #+#    #+#             */
-/*   Updated: 2025/03/21 19:32:49 by gmoulin          ###   ########.fr       */
+/*   Updated: 2025/03/21 20:55:18 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,8 @@
 	//philo is thinking
 		//print "[timestamp in ms] Philo [id] is thinking"
 	//repeat
-int	is_dead(t_philo *philo)
-{
-	pthread_mutex_lock(philo->dead_mutex);
-	if (*philo->dead)
-	{
-		pthread_mutex_unlock(philo->dead_mutex);
-		return (1);
-	}
-	pthread_mutex_unlock(philo->dead_mutex);
-	return (0);
-}
 
+//philosopher is eating
 static void	eating(t_philo *philo)
 {
 	pthread_mutex_lock(philo->right_fork);
@@ -57,17 +47,20 @@ static void	eating(t_philo *philo)
 	pthread_mutex_unlock(philo->right_fork);
 }
 
+//philosopher is sleeping
 static void	sleeping(t_philo *philo)
 {
 	print_mutex(SLEEP, philo, philo->id);
 	ft_usleep(philo->time_to_sleep);
 }
 
+//philosopher is thinking
 static void	thinking(t_philo *philo)
 {
 	print_mutex(THINK, philo, philo->id);
 }
 
+//philosopher logic/routine
 void	*philo_logic(void *philo)
 {
 	t_philo	*philo_ptr;
