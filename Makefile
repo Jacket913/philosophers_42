@@ -50,12 +50,13 @@ endef
 ### SRCS ###
 
 define SRC 	:=
-	dead_check.c \
 	error_checks.c \
 	ft_usleep.c \
 	init.c \
 	main.c \
-	meals_check.c \
+	monitor.c \
+	philo_logic.c \
+	threads_join.c \
 	utils.c
 endef
 
@@ -112,6 +113,6 @@ run: $(NAME)
 	./$(NAME)
 
 test: $(NAME) $(IGNORE_RDLN)
-	valgrind --track-origins=yes --leak-check=full --show-leak-kinds=all --trace-children=yes --track-fds=yes --suppressions=$(IGNORE_RDLN) ./$(NAME)
+	valgrind --track-origins=yes --leak-check=full --show-leak-kinds=all --trace-children=yes --track-fds=yes ./$(NAME)
 
 .PHONY: all clean fclean re cleanlib fcleanlib relib norm watch format run test

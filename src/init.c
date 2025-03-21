@@ -6,7 +6,7 @@
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 18:48:20 by gmoulin           #+#    #+#             */
-/*   Updated: 2025/03/20 03:25:20 by gmoulin          ###   ########.fr       */
+/*   Updated: 2025/03/21 19:51:29 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,6 @@ static void	init_philo(t_philo *philo, char **av,
 		philo[i].write_mutex = &program->write_mutex;
 		philo[i].eat_mutex = &program->eat_mutex;
 		philo[i].dead_mutex = &program->dead_mutex;
-		print_philo(&philo[i], program, "\n== Initialized ==\n");
-		ft_usleep(500);
-		i++;
-	}
-	write(1, "\n", 1);
-	i = 0;
-	while (i < ft_atoi(av[1]))
-	{
-		print_philo(&philo[i], program, "\n++ After sleep ++\n");
 		i++;
 	}
 }

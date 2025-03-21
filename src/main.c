@@ -6,11 +6,17 @@
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 15:04:12 by gmoulin           #+#    #+#             */
-/*   Updated: 2025/03/20 03:45:19 by gmoulin          ###   ########.fr       */
+/*   Updated: 2025/03/21 19:51:58 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+//av[1] = number of philosophers (between 2 and 200 max)
+//av[2] = time to die
+//av[3] = time to eat
+//av[4] = time to sleep
+//av[5] = number of meals before stop
 
 int	main(int ac, char **av)
 {
@@ -18,59 +24,10 @@ int	main(int ac, char **av)
 	t_philo			philo[200];
 	pthread_mutex_t	forks[200];
 
-	//check for wrong number of arguments
-	if (ac < 5 || ac > 6)
-		return (error("Error: Wrong number of arguments.\n"), 1);
-
-	//check for numerical values
-	if (check_args(av))
+	if (check_args(ac, av))
 		return (1);
-
-	//av[1] = number of philosophers (200 max)
-	//av[2] = time to die
-	//av[3] = time to eat
-	//av[4] = time to sleep
-	//av[5] = number of meals before stop
-
-	//init program, forks, philo
 	init(philo, av, &program, forks);
-
-	//join threads
-
-		while (1)
-		{
-			//checks for death every 1ms and break if there is one
-			if (program_dead_check(philo, &program))
-				break;
-			
-			//int thinking = 0;
-			//if thinking
-				//if left fork available
-					//grab fork left
-					//print "[timestamp in ms] Philo [id] has taken a fork"
-					//if right fork available
-						//grab fork right
-						//print "[timestamp in ms] Philo [id] has taken a fork"
-					//else if right fork not available
-						//release left fork
-						//print "[timestamp in ms] Philo [id] has released a fork"
-
-				//if holding both forks
-					//philo is eating
-					//print "[timestamp in ms] Philo [id] is eating"
-					//sleep for (av[3]) time
-					//release left fork
-					//release right fork
-					//philo is sleeping
-					//print "[timestamp in ms] Philo [id] is sleeping"
-					//sleep for (av[4]) time
-
-			//else
-				//philo is thinking
-				//if !thinking
-					//print "[timestamp in ms] Philo [id] is thinking"
-					//thinking = 1
-		}
-	//destroy mutexes
+	threads_engage(&program, forks);
+	destroy_mutexes(NULL, &program, forks);
 	return (0);
 }

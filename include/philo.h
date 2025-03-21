@@ -6,7 +6,7 @@
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 15:04:30 by gmoulin           #+#    #+#             */
-/*   Updated: 2025/03/20 03:24:07 by gmoulin          ###   ########.fr       */
+/*   Updated: 2025/03/21 19:51:19 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,20 @@ typedef struct s_program
 	pthread_mutex_t	dead_mutex;
 }	t_program;
 
-//dead_check.c
-int	program_dead_check(t_philo *philo, t_program *program);
+# define FORK	"has taken a fork"
+# define EAT	"is eating"
+# define SLEEP	"is sleeping"
+# define THINK	"is thinking"
+# define DEAD	"died"
+# define FULL	"All philosophers are full, shutting down simulation"
+# define ERR_PTHREAD_CREATE	"Error: pthread_create() failed.\n"
+# define ERR_PTHREAD_JOIN	"Error: pthread_join() failed.\n"
+# define ERR_ARGS_NUM	"Error: Wrong number of arguments.\n"
+# define ERR_ARGS_DIGIT	"Error: Only digits allowed.\n"
+# define ERR_PHILO_NUM	"Error: Should have from 2 to 200 philos max.\n"
 
 // error_checks.c
-void	error(char *str);
-int		check_args(char **av);
+int		check_args(int ac, char **av);
 
 // ft_usleep.c
 size_t	get_current_time(void);
@@ -61,16 +69,22 @@ int		ft_usleep(size_t milliseconds);
 
 //init.c
 void	init(t_philo *philo, char **av, t_program *program,
-	pthread_mutex_t *forks);
+			pthread_mutex_t *forks);
 
-// meals_check.c
-int		full_of_soup_check(t_philo *philo);
-int		philos_all_fed_check(t_philo *philo, t_program *program);
+// monitor.c
+void	*monitor_logic(void *arg);
+
+// philo_logic.c
+int		is_dead(t_philo *philo);
+void	*philo_logic(void *philo);
+
+// thread_join.c
+void	threads_engage(t_program *program, pthread_mutex_t *forks);
 
 // utils.c
+void	destroy_mutexes(char *str, t_program *program, pthread_mutex_t *forks);
 size_t	ft_strlen(char *str);
 int		ft_atoi(const char *nptr);
 void	print_mutex(char *str, t_philo *philo, int id);
-void	print_philo(t_philo *philo, t_program *program, char *str);
 
 #endif
