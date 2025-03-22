@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kmoulin <kmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 18:48:20 by gmoulin           #+#    #+#             */
-/*   Updated: 2025/03/21 20:57:17 by gmoulin          ###   ########.fr       */
+/*   Updated: 2025/03/22 16:00:59 by kmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ static void	init_forks(pthread_mutex_t *forks, int number_of_philosophers)
 	while (i < number_of_philosophers)
 	{
 		pthread_mutex_init(&forks[i], NULL);
-		printf("||| Initialized Fork %d.\n", i + 1);
 		i++;
 	}
 }
