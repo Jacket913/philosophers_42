@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_checks.c                                     :+:      :+:    :+:   */
+/*   args_checks.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kmoulin <kmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 18:29:36 by gmoulin           #+#    #+#             */
-/*   Updated: 2025/03/21 19:30:04 by gmoulin          ###   ########.fr       */
+/*   Updated: 2025/03/22 16:01:43 by kmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	check_args(int ac, char **av)
 			j++;
 		}
 	}
-	if (ft_atoi(av[1]) == 1 || ft_atoi(av[1]) > 200)
+	if (ft_atoi(av[1]) > 200)
 		return (error(ERR_PHILO_NUM), 1);
 	return (0);
 }

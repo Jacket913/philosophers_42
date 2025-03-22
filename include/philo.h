@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kmoulin <kmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 15:04:30 by gmoulin           #+#    #+#             */
-/*   Updated: 2025/03/21 20:58:46 by gmoulin          ###   ########.fr       */
+/*   Updated: 2025/03/22 16:05:16 by kmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ typedef struct s_program
 # define ERR_PTHREAD_JOIN	"Error: pthread_join() failed.\n"
 # define ERR_ARGS_NUM	"Error: Wrong number of arguments.\n"
 # define ERR_ARGS_DIGIT	"Error: Only digits allowed.\n"
-# define ERR_PHILO_NUM	"Error: Should have from 2 to 200 philos max.\n"
+# define ERR_PHILO_NUM	"Error: Philo number should be between 1 and 200 max.\n"
 
 // error_checks.c
 int		check_args(int ac, char **av);

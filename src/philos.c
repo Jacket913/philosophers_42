@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo_logic.c                                      :+:      :+:    :+:   */
+/*   philos.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kmoulin <kmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 03:48:20 by gmoulin           #+#    #+#             */
-/*   Updated: 2025/03/21 20:55:18 by gmoulin          ###   ########.fr       */
+/*   Updated: 2025/03/22 16:03:28 by kmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,12 @@ static void	eating(t_philo *philo)
 {
 	pthread_mutex_lock(philo->right_fork);
 	print_mutex(FORK, philo, philo->id);
+	if (philo->number_of_philosophers == 1)
+	{
+		pthread_mutex_unlock(philo->right_fork);
+		ft_usleep(philo->time_to_die);
+		return ;
+	}
 	pthread_mutex_lock(philo->left_fork);
 	print_mutex(FORK, philo, philo->id);
 	print_mutex(EAT, philo, philo->id);
