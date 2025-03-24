@@ -6,7 +6,7 @@
 /*   By: kmoulin <kmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 03:48:20 by gmoulin           #+#    #+#             */
-/*   Updated: 2025/03/22 16:03:28 by kmoulin          ###   ########.fr       */
+/*   Updated: 2025/03/24 22:09:51 by kmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,31 +27,6 @@
 	//philo is thinking
 		//print "[timestamp in ms] Philo [id] is thinking"
 	//repeat
-
-//philosopher is eating
-static void	eating(t_philo *philo)
-{
-	pthread_mutex_lock(philo->right_fork);
-	print_mutex(FORK, philo, philo->id);
-	if (philo->number_of_philosophers == 1)
-	{
-		pthread_mutex_unlock(philo->right_fork);
-		ft_usleep(philo->time_to_die);
-		return ;
-	}
-	pthread_mutex_lock(philo->left_fork);
-	print_mutex(FORK, philo, philo->id);
-	print_mutex(EAT, philo, philo->id);
-	philo->eating = 1;
-	pthread_mutex_lock(philo->eat_mutex);
-	philo->last_meal = get_current_time();
-	philo->meals_eaten++;
-	pthread_mutex_unlock(philo->eat_mutex);
-	ft_usleep(philo->time_to_eat);
-	philo->eating = 0;
-	pthread_mutex_unlock(philo->left_fork);
-	pthread_mutex_unlock(philo->right_fork);
-}
 
 //philosopher is sleeping
 static void	sleeping(t_philo *philo)
