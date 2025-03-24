@@ -73,7 +73,7 @@ void	*philo_logic(void *philo)
 
 	philo_ptr = (t_philo *)philo;
 	if (philo_ptr->id % 2 == 0)
-		ft_usleep(100);
+		ft_usleep(1);
 	while (!is_dead(philo_ptr))
 	{
 		if (is_dead(philo_ptr))
