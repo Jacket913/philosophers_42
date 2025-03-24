@@ -6,7 +6,7 @@
 /*   By: kmoulin <kmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 15:04:30 by gmoulin           #+#    #+#             */
-/*   Updated: 2025/03/22 16:05:16 by kmoulin          ###   ########.fr       */
+/*   Updated: 2025/03/24 21:13:58 by kmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,9 @@ typedef struct s_program
 
 // error_checks.c
 int		check_args(int ac, char **av);
+
+// eating.c
+void	eating(t_philo *philo);
 
 // ft_usleep.c
 size_t	get_current_time(void);
