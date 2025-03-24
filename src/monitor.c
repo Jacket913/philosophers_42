@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   monitor.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kmoulin <kmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 04:35:01 by gmoulin           #+#    #+#             */
-/*   Updated: 2025/03/21 20:56:32 by gmoulin          ###   ########.fr       */
+/*   Updated: 2025/03/24 17:40:48 by kmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,17 @@ static int	philos_all_fed_check(t_philo *philo)
 	int	full_of_yummy;
 	int	max_soup;
 
-	i = 0;
 	full_of_yummy = 0;
 	max_soup = philo->number_of_times_each_philosopher_must_eat;
 	if (philo[0].number_of_times_each_philosopher_must_eat == -1)
 		return (0);
-	while (i < philo[0].number_of_philosophers && \
-		philo[i].meals_eaten >= max_soup)
+	i = -1;
+	while (++i < philo[0].number_of_philosophers)
 	{
-		full_of_yummy++;
-		i++;
+		pthread_mutex_lock(philo[i].eat_mutex);
+		if (philo[i].meals_eaten >= max_soup)
+			full_of_yummy++;
+		pthread_mutex_unlock(philo[i].eat_mutex);
 	}
 	if (full_of_yummy == philo[0].number_of_philosophers)
 	{
@@ -47,7 +48,10 @@ static int	philo_dead_check(t_philo *philo)
 	pthread_mutex_lock(philo->eat_mutex);
 	if (get_current_time() - philo->last_meal >= philo->time_to_die
 		&& philo->eating == 0)
-		return (pthread_mutex_unlock(philo->eat_mutex), 1);
+	{
+		pthread_mutex_unlock(philo->eat_mutex);
+		return (1);
+	}
 	pthread_mutex_unlock(philo->eat_mutex);
 	return (0);
 }
