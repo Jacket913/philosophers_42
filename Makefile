@@ -51,6 +51,7 @@ endef
 
 define SRC 	:=
 	args_checks.c \
+	eating.c \
 	ft_usleep.c \
 	init.c \
 	main.c \
