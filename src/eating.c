@@ -6,7 +6,7 @@
 /*   By: kmoulin <kmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 15:37:49 by kmoulin           #+#    #+#             */
-/*   Updated: 2025/03/24 22:03:23 by kmoulin          ###   ########.fr       */
+/*   Updated: 2025/03/24 22:39:52 by kmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void	eating(t_philo *philo)
 	pthread_mutex_t	*first_fork;
 	pthread_mutex_t	*second_fork;
 
-	// Alternate fork-picking order based on philosopher ID
 	deadlock_forks(philo, &first_fork, &second_fork);
 	pthread_mutex_lock(first_fork);
 	print_mutex(FORK, philo, philo->id);
