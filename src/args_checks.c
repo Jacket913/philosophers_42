@@ -37,7 +37,7 @@ int	check_args(int ac, char **av)
 			j++;
 		}
 	}
-	if (ft_atoi(av[1]) > 200)
+	if (ft_atoi(av[1]) > 200 || ft_atoi(av[1]) < 1)
 		return (error(ERR_PHILO_NUM), 1);
 	return (0);
 }
