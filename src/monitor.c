@@ -87,7 +87,7 @@ void	*monitor_logic(void *arg)
 	{
 		if (program_dead_check(philos) || philos_all_fed_check(philos))
 			break ;
-		ft_usleep(1000);
+		ft_usleep(1);
 	}
 	return (arg);
 }
